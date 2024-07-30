@@ -12,6 +12,12 @@ Resources:
       Handler: index.handler
       Runtime: nodejs20.x
       CodeUri: ./existing-lambda
+      Environment:
+        Variables:
+          TABLE_NAME: !ImportValue itemsDB
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !ImportValue itemsDB
       Events:
         ApiEvent:
           Type: Api
@@ -19,3 +25,4 @@ Resources:
             Path: /existing
             Method: get
             RestApiId: !Ref ExistingApiGateway
+        
