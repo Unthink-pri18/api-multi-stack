@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Resources:
+  LatestApiGateway:
+    Type: 'AWS::Serverless::Api'
+    Properties:
+      StageName: 'prod'
+
+  NewLambdaFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs20.x
+      CodeUri: ./latest-lambda
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /new
+            Method: get
+            RestApiId: !Ref LatestApiGateway
+
