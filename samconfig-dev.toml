@@ -1,0 +1,13 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "Testing-some-diff-name-Dev"
+s3_bucket = "Testing-some-diff-lite-dev-pipeline"
+s3_prefix = "Testing-lite-dev"
+region = "ap-south-1"
+capabilities = "CAPABILITY_IAM"
+confirm_changeset = false
+image_repositories = []
+#parameter_overrides = "StageName=\"stage\""
+parameter_overrides = "StageName=Dev-different-name UserPoolId=ap-south-1_PKZL349X2 Audience=7mbmtjvqq3hgn41bsificl8enk"

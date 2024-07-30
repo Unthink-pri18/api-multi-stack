@@ -1,0 +1,45 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  MyApiGatewayRestApiId:
+    Type: String
+  MyApiGatewayRootResourceId:
+    Type: String
+
+Resources:
+  MyLambdaFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs20.x
+      CodeUri: .
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MyApiGatewayRestApiId
+            Path: /mylambda
+            Method: get
+
+  ApiResource:
+    Type: 'AWS::ApiGateway::Resource'
+    Properties:
+      ParentId: !Ref MyApiGatewayRootResourceId
+      PathPart: mylambda
+      RestApiId: !Ref MyApiGatewayRestApiId
+
+  ApiMethod:
+    Type: 'AWS::ApiGateway::Method'
+    Properties:
+      AuthorizationType: NONE
+      HttpMethod: GET
+      ResourceId: !Ref ApiResource
+      RestApiId: !Ref MyApiGatewayRestApiId
+      Integration:
+        IntegrationHttpMethod: POST
+        Type: AWS_PROXY
+        Uri: !Sub
+          - arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${MyLambdaFunction.Arn}/invocations
+          - MyLambdaFunction: !GetAtt MyLambdaFunction.Arn
+      MethodResponses:
+        - StatusCode: 200
+

@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Resources:
+  MyApiGateway:
+    Type: 'AWS::ApiGateway::RestApi'
+    Properties:
+      Name: 'MyApiGateway'
+
+  MyApiGatewayRootResourceId:
+    Type: 'AWS::ApiGateway::Resource'
+    Properties:
+      ParentId: !GetAtt MyApiGateway.RootResourceId
+      PathPart: "root"
+      RestApiId: !Ref MyApiGateway
+
+  ApiGatewayDeployment:
+    Type: 'AWS::ApiGateway::Deployment'
+    Properties:
+      RestApiId: !Ref MyApiGateway
+      StageName: prod
+
+  MyApiGatewayRestApiId:
+    Value: !Ref MyApiGateway
+    Export:
+      Name: MyApiGatewayRestApiId
+
+  MyApiGatewayRootResourceExport:
+    Value: !Ref MyApiGatewayRootResourceId
+    Export:
+      Name: MyApiGatewayRootResourceId
+
+  NestedStack:
+    Type: 'AWS::CloudFormation::Stack'
+    Properties:
+      TemplateURL: !Sub './nested-template.yaml'
+      Parameters:
+        MyApiGatewayRestApiId: !Ref MyApiGateway
+        MyApiGatewayRootResourceId: !Ref MyApiGatewayRootResourceId
+

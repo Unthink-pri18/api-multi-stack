@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Resources:
+  ExistingApiGateway:
+    Type: 'AWS::Serverless::Api'
+    Properties:
+      StageName: 'prod'
+
+  ExistingLambdaFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs20.x
+      CodeUri: ./existing-lambda
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /existing
+            Method: get
+            RestApiId: !Ref ExistingApiGateway
