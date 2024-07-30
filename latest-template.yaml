@@ -6,7 +6,7 @@ Resources:
     Properties:
       StageName: 'prod'
 
-  NewLambdaFunction:
+  latestLambdaFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
       Handler: index.handler
