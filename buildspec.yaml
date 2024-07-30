@@ -12,5 +12,5 @@ phases:
 
       - sam build --template-file latest-template.yaml --config-file samconfig-dev.toml
       - sam package --output-template-file package3.yml  --s3-bucket api-stack-poc-testing2
-      - sam deploy --template-file package3.yml --stack-name api-stack-poc-testing2 --s3-bucket api-stack-poc-testing3 --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND --no-confirm-changeset --no-fail-on-empty-changeset
+      - sam deploy --template-file package3.yml --stack-name api-stack-poc-testing3 --s3-bucket api-stack-poc-testing2 --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND --no-confirm-changeset --no-fail-on-empty-changeset
 
