@@ -30,6 +30,19 @@ Resources:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
       TableName: testStudentTable
+  withoutexportTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+      - AttributeName: studentId
+        AttributeType: S
+      KeySchema:
+      - AttributeName: studentId
+        KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      TableName: withoutexportTable
 Outputs:
   testStudentTable:
     Description: The name of the DynamoDB table for students

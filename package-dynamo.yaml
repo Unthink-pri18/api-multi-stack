@@ -34,6 +34,21 @@ Resources:
       TableName: testStudentTable
     Metadata:
       SamResourceId: testStudentTable
+  withoutexportTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+      - AttributeName: studentId
+        AttributeType: S
+      KeySchema:
+      - AttributeName: studentId
+        KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      TableName: withoutexportTable
+    Metadata:
+      SamResourceId: withoutexportTable
 Outputs:
   testStudentTable:
     Description: The name of the DynamoDB table for students

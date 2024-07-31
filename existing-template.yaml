@@ -14,10 +14,10 @@ Resources:
       CodeUri: ./existing-lambda
       Environment:
         Variables:
-          TABLE_NAME: !ImportValue testitemsDB
+          TABLE_NAME: !ImportValue withoutexportTable
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !ImportValue testitemsDB
+            TableName: !ImportValue withoutexportTable
       Events:
         ApiEvent:
           Type: Api
