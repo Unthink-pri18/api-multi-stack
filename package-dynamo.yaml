@@ -17,6 +17,8 @@ Resources:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
       TableName: testitemsDB
+    Metadata:
+      SamResourceId: testitemsDB
   testStudentTable:
     Type: AWS::DynamoDB::Table
     Properties:
@@ -30,6 +32,8 @@ Resources:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
       TableName: testStudentTable
+    Metadata:
+      SamResourceId: testStudentTable
 Outputs:
   testStudentTable:
     Description: The name of the DynamoDB table for students
