@@ -56,3 +56,9 @@ Outputs:
       Ref: testitemsDB
     Export:
       Name: testitemsDB
+  withoutexportTable:
+    Description: The name of the DynamoDB table
+    Value:
+      Ref: withoutexportTable
+    Export:
+      Name: withoutexportTable

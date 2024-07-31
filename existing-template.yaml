@@ -25,4 +25,11 @@ Resources:
             Path: /existing
             Method: get
             RestApiId: !Ref ExistingApiGateway
+
+Outputs:
+  ExistingApiGateway:
+    Description: "The name of the new api"
+    Value: !Ref ExistingApiGateway
+    Export:
+      Name: ExistingApiGateway
         

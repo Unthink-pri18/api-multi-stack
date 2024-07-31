@@ -12,11 +12,14 @@ Resources:
       Handler: index.handler
       Runtime: nodejs20.x
       CodeUri: ./latest-lambda
+      Environment:
+        Variables:
+          API_NAME: !ImportValue ExistingApiGateway
       Events:
         ApiEvent:
           Type: Api
           Properties:
             Path: /new
             Method: get
-            RestApiId: !Ref LatestApiGateway
+            RestApiId: !Ref ExistingApiGateway
 
