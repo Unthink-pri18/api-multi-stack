@@ -1,11 +1,19 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
+
+Parameters:
+  StageName:
+    Type: String
+    Default: Dev
+    
 Description: >
   SAM Template to create a DynamoDB table for the items and names table
 
 Resources:
   itemsDB:
     Type: 'AWS::DynamoDB::Table'
+    Properties:
+      TableName: !Sub itemsDB-${StageName}
     Properties: 
       AttributeDefinitions: 
         - AttributeName: id
@@ -43,5 +51,6 @@ Outputs:
     Description: "The name of the DynamoDB table"
     Value: !Ref itemsDB
     Export:
-      Name: itemsDB
+      Name:  !Sub "itemsDB-${StageName}"
+
       
