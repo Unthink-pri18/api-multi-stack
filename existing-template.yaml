@@ -19,10 +19,10 @@ Resources:
       CodeUri: ./existing-lambda
       Environment:
         Variables:
-          TABLE_NAME: !ImportValue !Sub "itemsDB-${StageName}"
+          TABLE_NAME: !ImportValue itemsDBtest
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !ImportValue !Sub "itemsDB-${StageName}"
+            TableName: !ImportValue itemsDBtest
       Events:
         ApiEvent:
           Type: Api
