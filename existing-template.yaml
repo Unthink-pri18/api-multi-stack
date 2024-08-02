@@ -1,5 +1,10 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
+Parameters:
+  StageName:
+    Type: String
+    Default: Dev
+    
 Resources:
   ExistingApiGateway:
     Type: 'AWS::Serverless::Api'
@@ -14,10 +19,10 @@ Resources:
       CodeUri: ./existing-lambda
       Environment:
         Variables:
-          TABLE_NAME: !ImportValue withoutexportTable
+          TABLE_NAME: !ImportValue !Sub "itemsDB-${StageName}"
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !ImportValue withoutexportTable
+            TableName: !ImportValue !Sub "itemsDB-${StageName}"
       Events:
         ApiEvent:
           Type: Api
