@@ -7,15 +7,10 @@ Resources:
       StageName: 'prod'
       Auth:
         DefaultAuthorizer: CognitoAuthorizer
-        AddDefaultAuthorizerToCorsPreflight: False
         Authorizers:
           CognitoAuthorizer:
-            UserPoolArn: arn:aws:cognito-idp:ap-south-1:010928215088:userpool/ap-south-1_YXkAOt7Bl
-      Cors:
-        AllowMethods: "'GET, POST, PUT, OPTIONS, DELETE, PATCH'"
-        AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,User-Timezone'"
-        AllowOrigin: "'*'"
-        MaxAge: 86400
+            UserPoolArn: !Sub arn:aws:cognito-idp:${AWS::Region}:${AWS::AccountId}:userpool/ap-south-1_YXkAOt7Bl
+            IdentitySource: method.request.header.Authorization
 
   NewLambdaFunction:
     Type: 'AWS::Serverless::Function'
