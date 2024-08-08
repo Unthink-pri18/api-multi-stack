@@ -11,6 +11,17 @@ Resources:
     Properties:
       StageName: 'prod'
       EndpointConfiguration: REGIONAL
+      Auth:
+        DefaultAuthorizer: CognitoAuthorizer
+        AddDefaultAuthorizerToCorsPreflight: False
+        Authorizers:
+          CognitoAuthorizer:
+            UserPoolArn: arn:aws:cognito-idp:ap-south-1:010928215088:userpool/ap-south-1_YXkAOt7Bl
+      Cors:
+        AllowMethods: "'GET, POST, PUT, OPTIONS, DELETE, PATCH'"
+        AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,User-Timezone'"
+        AllowOrigin: "'*'"
+        MaxAge: 86400
 
   ExistingLambdaFunction:
     Type: 'AWS::Serverless::Function'
@@ -30,6 +41,8 @@ Resources:
           Properties:
             Path: /existing
             Method: get
+            Auth:
+              Authorizer: CognitoAuthorizer
             RestApiId: !Ref ExistingApiGateway
 
 Outputs:
