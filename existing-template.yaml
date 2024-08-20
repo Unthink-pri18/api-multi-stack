@@ -42,7 +42,7 @@ Resources:
             Path: /existing
             Method: get
             Auth:
-              Authorizer: CognitoAuthorizer
+              Authorizer: NONE
             RestApiId: !Ref ExistingApiGateway
 
 Outputs:
