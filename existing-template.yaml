@@ -20,7 +20,7 @@ Resources:
       Cors:
         AllowMethods: "'GET, POST, PUT, OPTIONS, DELETE, PATCH'"
         AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,User-Timezone'"
-        AllowOrigin: "'http://webpage.priyanshudevops.tech'"
+        AllowOrigin: "'http://*.priyanshudevops.tech'"
         MaxAge: 86400
 
   ExistingLambdaFunction:
