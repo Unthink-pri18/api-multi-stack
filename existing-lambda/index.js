@@ -3,6 +3,11 @@ exports.handler = async (event) => {
 
     const response = {
         statusCode: 200,
+        headers: {
+            'Access-Control-Allow-Origin': '*',  // Allows all origins; change to specific domains if needed
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        },
         body: JSON.stringify({
             message: "Hello from Existing Lambda Function!",
         }),
