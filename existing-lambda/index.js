@@ -2,7 +2,7 @@ exports.handler = async (event) => {
     console.log('Handling existing API request:', JSON.stringify(event, null, 2));
 
     // Define allowed origins
-    const allowedOrigins = ['http://webpage.priyanshudevops.tech', 'http://testpage.priyanshudevops.tech'];
+    const allowedOrigins = ['http://webpage.priyanshudevops.tech', 'http://testpage.priyanshudevops.tech','abcd.priyanshudevops.tech'];
     
     // Get the Origin header from the request
     const requestOrigin = event.headers.Origin || event.headers.origin;
