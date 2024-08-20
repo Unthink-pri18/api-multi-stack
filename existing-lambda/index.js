@@ -4,7 +4,7 @@ exports.handler = async (event) => {
     const response = {
         statusCode: 200,
         headers: {
-            'Access-Control-Allow-Origin': 'http://webpage.priyanshudevops.tech',  // Allows all origins; change to specific domains if needed
+            'Access-Control-Allow-Origin': 'http://*.priyanshudevops.tech',  // Allows all origins; change to specific domains if needed
             'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
             'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         },
