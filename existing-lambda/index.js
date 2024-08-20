@@ -1,10 +1,15 @@
 exports.handler = async (event) => {
-    console.log('Handling new API request:', JSON.stringify(event, null, 2));
+    console.log('Handling existing API request:', JSON.stringify(event, null, 2));
 
     const response = {
         statusCode: 200,
+        headers: {
+            'Access-Control-Allow-Origin': 'http://webpage.priyanshudevops.tech','http://testpage.priyanshudevops.tech',  // Allows all origins; change to specific domains if needed
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        },
         body: JSON.stringify({
-            message: "Hello from existing Lambda Function!",
+            message: "Hello from Existing Lambda Function!",
         }),
     };
 
