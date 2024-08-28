@@ -13,7 +13,7 @@ phases:
   pre_build:
     commands:
       - echo "Running SonarQube analysis..."
-      - sonar-scanner -Dsonar.projectKey=testing-project18  -Dsonar.sources=. -Dsonar.host.url=http://3.110.183.179:9000 -Dsonar.token=sqp_a556ec28282db43bd422d2cf75bb2f91dbf12c3b -Dsonar.nodejs.executable=$(which node)
+      - sonar-scanner -Dsonar.projectKey=testing-project18  -Dsonar.nodejs.executable=$(which node) -Dsonar.sources=. -Dsonar.host.url=http://3.110.183.179:9000 -Dsonar.token=sqp_a556ec28282db43bd422d2cf75bb2f91dbf12c3b 
   build:
     commands:
       - sam build --template-file existing-template.yaml --config-file samconfig-dev.toml
