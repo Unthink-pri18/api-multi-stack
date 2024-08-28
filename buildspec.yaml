@@ -3,7 +3,9 @@ phases:
   install:
     runtime-versions:
       java: corretto17   # Ensure you have the correct Java runtime
+      nodejs: 16 
     commands:
+      -  node -v
       - echo "Installing SonarQube Scanner..."
       - curl -o /opt/sonar-scanner-cli.zip -L "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.0.2966-linux.zip?_gl=1*1la3axo*_gcl_au*NTg2OTcxOTc0LjE3MjQ4MjM0MjM.*_ga*MTc0MTY3MTU1OS4xNzI0ODIzNDI0*_ga_9JZ0GZ5TC6*MTcyNDgyMzQyMy4xLjEuMTcyNDgzNzE4MS42MC4wLjA."
       - unzip /opt/sonar-scanner-cli.zip -d /opt
