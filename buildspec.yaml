@@ -5,9 +5,9 @@ phases:
       java: corretto17   # Ensure you have the correct Java runtime
     commands:
       - echo "Installing SonarQube Scanner..."
-      - curl -o /opt/sonar-scanner-cli.zip -L "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip"
+      - curl -o /opt/sonar-scanner-cli.zip -L "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-6.1.0.4477-linux-x64.zip?_gl=1*b0291u*_gcl_au*NTg2OTcxOTc0LjE3MjQ4MjM0MjM.*_ga*MTc0MTY3MTU1OS4xNzI0ODIzNDI0*_ga_9JZ0GZ5TC6*MTcyNDgyMzQyMy4xLjEuMTcyNDgzNjY4Ny4yMy4wLjA."
       - unzip /opt/sonar-scanner-cli.zip -d /opt
-      - export PATH=$PATH:/opt/sonar-scanner-4.8.0.2856-linux/bin
+      - export PATH=$PATH:/opt/sonar-scanner-6.1.0.4477-linux/bin
   pre_build:
     commands:
       - echo "Running SonarQube analysis..."
