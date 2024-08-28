@@ -1,5 +1,17 @@
 version: 0.2
 phases:     
+  install:
+    runtime-versions:
+      java: corretto11  # Ensure you have the correct Java runtime
+    commands:
+      - echo "Installing SonarQube Scanner..."
+      - curl -o /opt/sonar-scanner-cli.zip -L "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip"
+      - unzip /opt/sonar-scanner-cli.zip -d /opt
+      - export PATH=$PATH:/opt/sonar-scanner-4.6.2.2472-linux/bin
+  pre_build:
+    commands:
+      - echo "Running SonarQube analysis..."
+      - sonar-scanner -Dsonar.projectKey=testing-project18  -Dsonar.sources=. -Dsonar.host.url=http://3.110.183.179:9000 -Dsonar.token=sqp_a556ec28282db43bd422d2cf75bb2f91dbf12c3b
   build:
     commands:
       - sam build --template-file existing-template.yaml --config-file samconfig-dev.toml
