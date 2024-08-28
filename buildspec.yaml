@@ -2,7 +2,7 @@ version: 0.2
 phases:     
   install:
     runtime-versions:
-      java: corretto11  # Ensure you have the correct Java runtime
+      java: corretto17   # Ensure you have the correct Java runtime
     commands:
       - echo "Installing SonarQube Scanner..."
       - curl -o /opt/sonar-scanner-cli.zip -L "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip"
