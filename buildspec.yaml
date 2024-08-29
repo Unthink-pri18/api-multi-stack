@@ -3,7 +3,7 @@ phases:
   install:
     runtime-versions:
       java: corretto17   # Ensure you have the correct Java runtime
-      nodejs: 16 
+      nodejs: 20
     commands:
       - /usr/local/bin/node -v
       - echo "Installing SonarQube Scanner..."
