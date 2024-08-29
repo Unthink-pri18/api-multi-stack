@@ -47,7 +47,7 @@ Resources:
 
 Outputs:
   ExistingApiGateway:
-    Description: "The name of the new api.."
+    Description: "The name of the new api..."
     Value: !Ref ExistingApiGateway
     Export:
       Name: ExistingApiGateway
