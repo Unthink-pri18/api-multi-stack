@@ -11,11 +11,10 @@ phases:
       - unzip /opt/sonar-scanner-cli.zip -d /opt
       - export PATH=$PATH:/opt/sonar-scanner-5.0.0.2966-linux/bin
   pre_build:
-    runtime-versions:
-      java: corretto17   # Ensure you have the correct Java runtime
-      nodejs: 20
     commands:
       - export PATH=$PATH:/usr/local/bin
+      - ls
+      - node -v
       - echo "Running SonarQube analysis..."
       - sonar-scanner -Dsonar.projectKey=testing-project18  -Dsonar.sources=. -Dsonar.host.url=http://3.110.183.179:9000 -Dsonar.token=sqp_a556ec28282db43bd422d2cf75bb2f91dbf12c3b 
   build:
