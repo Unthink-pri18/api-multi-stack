@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
 
-echo "Running AfterInstall script... $Name " >> /home/ubuntu/check-env-after.log
+echo "Application Name: $APPLICATION_NAME" >> /home/ubuntu/check-env-after.log
